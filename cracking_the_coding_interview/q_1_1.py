@@ -6,10 +6,13 @@ What if you cannot use additional data structures?
 '''
 
 def is_unique(input_string):
-    seen = [False] * 256
+    seen = [False] * 128
     for char in input_string:
         val = ord(char)
-        if seen[val]:
+        if val > 128:
+            print("Only ASCII strings supported")
+            return False
+        elif seen[val]:
             # Char already found in string
             return False
         seen[val] = True
